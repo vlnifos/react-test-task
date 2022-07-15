@@ -2,6 +2,15 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query"
 import { createApi } from "@reduxjs/toolkit/query/react"
 
 import { io } from "socket.io-client"
+import { setExamData } from "./examSlice"
+
+export type ExamData = {
+  course: string
+  grade: string
+  subject: string
+  time: string
+  schools: string[]
+}
 
 export const examApi = createApi({
   reducerPath: "api",
@@ -10,27 +19,28 @@ export const examApi = createApi({
   }),
   endpoints: (builder) => ({
     getExamData: builder.query({
-      queryFn: () => ({ data: [] }),
+      queryFn: () => {
+        return {
+          data: {} as ExamData,
+        }
+      },
       async onCacheEntryAdded(
         arg,
-        { cacheDataLoaded, updateCachedData, cacheEntryRemoved }
+        { cacheDataLoaded, updateCachedData, dispatch, cacheEntryRemoved }
       ) {
-        console.log("ws query", process.env.REACT_APP_API_URL)
         try {
-          console.log(`The endpoint 123123`)
-          const response = await cacheDataLoaded
-          console.log(`The endpoint answered`, response)
+          await cacheDataLoaded
 
           const socket = io(process.env.REACT_APP_API_URL || "")
 
           socket.on("data", (payload) => {
-            console.log("From socket:", payload)
-            updateCachedData((draft) => {
-              draft[0] = payload as never
+            updateCachedData((state) => {
+              Object.assign(state, payload)
+
+              dispatch(setExamData(payload))
             })
           })
         } catch {
-          console.log("CATCHED")
           // if cacheEntryRemoved resolves before cacheDataLoaded,
           // cacheDataLoaded throws an error
         }

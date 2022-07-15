@@ -13,7 +13,7 @@ export const ExamPage = (props: any) => {
   const query = useGetExamDataQuery("nothing")
 
   useEffect(() => {
-    console.log("qeury eXampPAge", query)
+    console.log("qeury eXampPAge", query.data)
   }, [query])
 
   const navigateToNewQuestion = () =>
@@ -22,6 +22,9 @@ export const ExamPage = (props: any) => {
   return (
     <div>
       <span>Exam</span>
+      {exam.head.course}
+      {exam.head.subject}
+      {exam.head.time}
 
       <AddQuestionBtn onClick={navigateToNewQuestion}>
         + Add question

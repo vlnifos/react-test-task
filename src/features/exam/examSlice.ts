@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "app/store"
 import { Question } from "utils/types"
+import { ExamData } from "./examApi"
 
 export interface ExamState {
   head: {
     grade: string
-    cource: string
+    course: string
     subject: string
     time: string
   }
@@ -15,7 +16,7 @@ export interface ExamState {
 
 const initialState: ExamState = {
   head: {
-    cource: "",
+    course: "",
     grade: "",
     subject: "",
     time: "",
@@ -28,7 +29,18 @@ export const examSlice = createSlice({
   name: "exam",
   initialState,
   reducers: {
-    getExamData: (state) => {},
+    setExamData: (state, action: PayloadAction<ExamData>) => {
+      const { course, grade, schools, subject, time } = action.payload
+
+      state.head = {
+        course,
+        grade,
+        subject,
+        time,
+      }
+
+      state.schools = schools
+    },
     addQuestion: (state, action: PayloadAction<Question>) => {
       state.questions.push(action.payload)
     },
@@ -38,3 +50,5 @@ export const examSlice = createSlice({
 export const selectExam = (state: RootState) => state.exam
 
 export default examSlice.reducer
+
+export const { setExamData, addQuestion } = examSlice.actions
