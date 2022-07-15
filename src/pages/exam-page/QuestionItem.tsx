@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 import { Question } from "utils/types"
 
@@ -6,15 +7,34 @@ type Props = {
 }
 
 export const QuestionItem = (props: Props) => {
-  const renderImages = () =>
-    props.question.images.map((x) => <img src={x} alt="img" />)
+  const [isShowAnswers, setIsShowAnswers] = useState(false)
+
+  const { id, type, text, images, points } = props.question
+
+  const renderImages = () => images.map((x) => <img src={x} alt="img" />)
 
   return (
     <div>
+      <FlexRowJustifyBetween>
+        <span>{id}</span>
+        <span>{type}</span>
+        <span>{points}</span>
+        <span>ACTIONS</span>
+      </FlexRowJustifyBetween>
       <div>
-        <div></div>
+        <span>{text}</span>
+        <div>{renderImages()}</div>
       </div>
-      <div>{renderImages()}</div>
+
+      {isShowAnswers && (
+        <div>
+          <div>ANSWERS</div>
+        </div>
+      )}
+
+      <button onClick={() => setIsShowAnswers(!isShowAnswers)}>
+        {isShowAnswers ? "Hide answers" : "Show answers"}
+      </button>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { selectExam } from "features/exam/examSlice"
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router"
 import styled from "styled-components"
+import { QuestionItem } from "./QuestionItem"
 
 export const ExamPage = (props: any) => {
   const params = useParams()
@@ -20,11 +21,7 @@ export const ExamPage = (props: any) => {
     navigate(`/exams/${params.id}/addquestion`)
 
   const renderQuestions = () =>
-    exam.questions.map((x) => (
-      <div>
-        {x.type} - {x.text}
-      </div>
-    ))
+    exam.questions.map((x) => <QuestionItem question={x} key={x.id} />)
 
   return (
     <MainPage>
