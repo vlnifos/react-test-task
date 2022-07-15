@@ -1,11 +1,8 @@
-import { useAppDispatch } from "app/hooks"
 import { Breadcrumbs } from "components/breadcrumbs/Breadcrumbs"
 import styled from "styled-components"
-import { headerBtns } from "utils/consts"
 import { useCurrentRoute } from "utils/hooks"
 import { ExamHeader } from "./ExamHeader"
 import { AddQuestionHeader } from "./AddQuestionHeader"
-import { HeaderBtns } from "./HeaderBtns"
 
 export const Header = (props: any) => {
   const {
@@ -37,9 +34,6 @@ export const Header = (props: any) => {
   )
 }
 
-const FlexRow = styled.div`
-  display: flex;
-`
 const FlexRowSpaceBetween = styled.div`
   display: flex;
   justify-content: space-between;

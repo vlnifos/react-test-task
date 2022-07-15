@@ -39,9 +39,6 @@ export const QuestionItem = (props: Props) => {
   )
 }
 
-const FlexRow = styled.div`
-  display: flex;
-`
 const FlexRowJustifyBetween = styled.div`
   display: flex;
   justify-content: space-between;

@@ -63,9 +63,6 @@ export const ExamPage = (props: any) => {
   )
 }
 
-const FlexRow = styled.div`
-  display: flex;
-`
 const FlexRowSpaceBetween = styled.div`
   display: flex;
   justify-content: space-between;
