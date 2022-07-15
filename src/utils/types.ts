@@ -3,7 +3,7 @@ interface MultipleChoiceQuestion {
   points: number
   comments: string
   type: "multiple_choice"
-  answers: MultipleChoiceAnswer[] | MatchingAnswer[]
+  answers: MultipleChoiceAnswer[]
 }
 
 interface MatchingQuestion {
@@ -11,7 +11,7 @@ interface MatchingQuestion {
   points: number
   comments: string
   type: "matching"
-  answers: MultipleChoiceAnswer | MatchingAnswer
+  pairs: MatchingPairs[]
 }
 
 export type MultipleChoiceAnswer = {
@@ -30,17 +30,4 @@ export type MatchingPairs = {
   answer: PairDetail
 }
 
-export type MatchingAnswer = {
-  pairs: MatchingPairs[]
-}
-
 export type Question = MultipleChoiceQuestion | MatchingQuestion
-
-// TODO: below. Union should depend on type field
-// export const a: Question = {
-//   text: "awd",
-//   points: 1,
-//   comments: "awdawd",
-//   type: "matching",
-//   answers: [],
-// };

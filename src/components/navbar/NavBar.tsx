@@ -27,36 +27,43 @@ export const NavBar = (props: any) => {
   console.log("location", location)
 
   return (
-    <FullHeight>
-      <FlexColumn>
-        {items.map((x) => (
+    <NavBarContainer>
+      <FullHeight>
+        <FlexColumn>
+          {items.map((x) => (
+            <NavBarItem
+              key={x.routeName}
+              imageSrc={x.imageSrc}
+              routeName={x.routeName}
+              disabled={x.disabled}
+              isActive={x.routeName === "exams"}
+            />
+          ))}
+        </FlexColumn>
+        <FlexColumn>
           <NavBarItem
-            key={x.routeName}
-            imageSrc={x.imageSrc}
-            routeName={x.routeName}
-            disabled={x.disabled}
-            isActive={x.routeName === "exams"}
+            key="documents"
+            imageSrc="https://file.rendit.io/n/zUGFVLuBxudyHVlOwTln.svg"
+            routeName="settings"
           />
-        ))}
-      </FlexColumn>
-      <FlexColumn>
-        <NavBarItem
-          key="documents"
-          imageSrc="https://file.rendit.io/n/zUGFVLuBxudyHVlOwTln.svg"
-          routeName="settings"
-        />
 
-        <NavBarItem
-          key="settings"
-          imageSrc="https://file.rendit.io/n/9T5tBmDxsCD3Mgb6GXNV.svg"
-          routeName="settings"
-        />
-      </FlexColumn>
-    </FullHeight>
+          <NavBarItem
+            key="settings"
+            imageSrc="https://file.rendit.io/n/9T5tBmDxsCD3Mgb6GXNV.svg"
+            routeName="settings"
+          />
+        </FlexColumn>
+      </FullHeight>
+    </NavBarContainer>
   )
 }
 
 // TODO: styles refactor
+const NavBarContainer = styled.div`
+  border: 1px solid #d0e8ef;
+  border-width: 1px 1px 0 0;
+`
+
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;

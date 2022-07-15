@@ -33,13 +33,17 @@ export const examApi = createApi({
 
           const socket = io(process.env.REACT_APP_API_URL || "")
 
-          socket.on("data", (payload) => {
+          const updateState = (payload: any) => {
             updateCachedData((state) => {
               Object.assign(state, payload)
 
               dispatch(setExamData(payload))
             })
-          })
+          }
+
+          socket.emit("get data", updateState)
+
+          socket.on("data", updateState)
         } catch {
           // if cacheEntryRemoved resolves before cacheDataLoaded,
           // cacheDataLoaded throws an error

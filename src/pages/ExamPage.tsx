@@ -19,20 +19,71 @@ export const ExamPage = (props: any) => {
   const navigateToNewQuestion = () =>
     navigate(`/exams/${params.id}/addquestion`)
 
-  return (
-    <div>
-      <span>Exam</span>
-      {exam.head.course}
-      {exam.head.subject}
-      {exam.head.time}
+  const renderQuestions = () =>
+    exam.questions.map((x) => (
+      <div>
+        {x.type} - {x.text}
+      </div>
+    ))
 
-      <AddQuestionBtn onClick={navigateToNewQuestion}>
-        + Add question
-      </AddQuestionBtn>
-    </div>
+  return (
+    <MainPage>
+      <LeftColumn>
+        <ExamDetails>
+          <div>
+            <div>
+              <div>{exam.head.grade}</div>
+              <div>{exam.head.subject}</div>
+            </div>
+
+            <div>
+              {exam.head.course}
+              {exam.head.time}
+            </div>
+          </div>
+        </ExamDetails>
+
+        <div>
+          <FlexRowSpaceBetween>
+            <span>Questions</span>
+
+            <AddQuestionBtn onClick={navigateToNewQuestion}>
+              + Add question
+            </AddQuestionBtn>
+          </FlexRowSpaceBetween>
+          {renderQuestions()}
+        </div>
+      </LeftColumn>
+
+      <RightColumn>
+        {exam.schools.map((x) => (
+          <div>{x}</div>
+        ))}
+      </RightColumn>
+    </MainPage>
   )
 }
 
+const FlexRow = styled.div`
+  display: flex;
+`
+const FlexRowSpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 const AddQuestionBtn = styled.button`
   padding: 10px;
+`
+const MainPage = styled.div`
+  width: 100%;
+  display: flex;
+`
+const LeftColumn = styled.div`
+  width: 70%;
+`
+const RightColumn = styled.div`
+  width: 30%;
+`
+const ExamDetails = styled.div`
+  width: 30%;
 `
