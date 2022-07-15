@@ -3,8 +3,8 @@ interface MultipleChoiceQuestion {
   text: string
   points: number
   comments: string
-  type: "multiple_choice"
   images: string[]
+  type: "multiple_choice"
   answers: MultipleChoiceAnswer[]
 }
 
@@ -13,9 +13,9 @@ interface MatchingQuestion {
   text: string
   points: number
   comments: string
-  type: "matching"
   images: string[]
-  pairs: MatchingPairs[]
+  type: "matching"
+  answers: MatchingPairs[]
 }
 
 export type MultipleChoiceAnswer = {
@@ -26,7 +26,6 @@ export type MultipleChoiceAnswer = {
 }
 
 type PairDetail = {
-  id: number
   text: string
   images: string[]
 }

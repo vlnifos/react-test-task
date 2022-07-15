@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "app/store"
-import { useLocation } from "react-router"
 import { Question } from "utils/types"
 
 const initialState: Question = {
@@ -36,6 +35,17 @@ export const addQuestionSlice = createSlice({
         text: "",
       })
     },
+    // TODO: pairs
+    // addMatchingPair(state) {
+    //   const lastId = state.answers[state.answers.length - 1]?.id || 0
+
+    //   state.answers.push({
+    //     id: lastId + 1,
+    //     images: [],
+    //     isCorrectAnswer: false,
+    //     text: "",
+    //   })
+    // },
     setAnswerData(state, action: PayloadAction<{ id: number; item: any }>) {
       const { id, item } = action.payload
 
@@ -54,5 +64,10 @@ export const selectQuestion = (state: RootState) => state.addQuestion
 
 export default addQuestionSlice.reducer
 
-export const { setQuestionData, addAnswer, setAnswerData, clearQuestionData } =
-  addQuestionSlice.actions
+export const {
+  setQuestionData,
+  addAnswer,
+  setAnswerData,
+  clearQuestionData,
+  // addMatchingPair,
+} = addQuestionSlice.actions

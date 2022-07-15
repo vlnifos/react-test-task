@@ -2,27 +2,37 @@ import { useAppDispatch } from "app/hooks"
 import { Breadcrumbs } from "components/breadcrumbs/Breadcrumbs"
 import styled from "styled-components"
 import { headerBtns } from "utils/consts"
-import { useCurrentPath } from "utils/hooks"
+import { useCurrentRoute } from "utils/hooks"
 import { ExamHeader } from "./ExamHeader"
 import { AddQuestionHeader } from "./AddQuestionHeader"
 import { HeaderBtns } from "./HeaderBtns"
 
 export const Header = (props: any) => {
-  const currentPath = useCurrentPath()
+  const {
+    params,
+    route: { path },
+  } = useCurrentRoute()
 
-  const route = {
+  const routeName = {
+    "/": "home",
     "/exams/:id": "exam",
     "/exams/:id/addquestion": "addQuestion",
-  }[currentPath]
+  }[path || "/"]!
+
+  const breadcrumbs = {
+    home: ["Home"],
+    exam: ["Exams", `Exam id: ${params.id}`],
+    addQuestion: ["Exams", `Exam id: ${params.id}`, "New question"],
+  }[routeName] as string[]
 
   return (
     <FlexRowSpaceBetween>
       <div>
-        <Breadcrumbs texts={["some", "thing"]} />
+        <Breadcrumbs texts={breadcrumbs} />
         <input type="text" value={"SOmething"} onChange={() => {}} />
       </div>
 
-      {route === "exam" ? <ExamHeader /> : <AddQuestionHeader />}
+      {routeName === "exam" ? <ExamHeader /> : <AddQuestionHeader />}
     </FlexRowSpaceBetween>
   )
 }

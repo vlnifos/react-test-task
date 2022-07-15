@@ -8,6 +8,7 @@ import {
 } from "features/add-question/addQuestionSlice"
 import styled from "styled-components"
 import { ImageSelector } from "./ImageSelector"
+import { Matching } from "./Matching"
 import { MultiChoice } from "./MultiChoice"
 
 export const AddQuestion = (props: any) => {
@@ -47,6 +48,8 @@ export const AddQuestion = (props: any) => {
     ))
   }
 
+  const handleAddMatchingPair = () => {}
+
   return (
     <AddQuestionCOntainer>
       <Section>
@@ -81,7 +84,11 @@ export const AddQuestion = (props: any) => {
             onChange={handleAnswerChange}
           />
         ) : (
-          <div>MATCHING</div>
+          <Matching
+            pairs={(question as any).answers}
+            onChange={() => {}}
+            addPair={handleAddMatchingPair}
+          />
         )}
       </Section>
       <Section>

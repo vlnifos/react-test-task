@@ -11,6 +11,8 @@ export const ExamPage = (props: any) => {
   const navigate = useNavigate()
   const exam = useAppSelector(selectExam)
 
+  console.log("paramsExam", params)
+
   const query = useGetExamDataQuery("nothing")
 
   useEffect(() => {
@@ -54,7 +56,7 @@ export const ExamPage = (props: any) => {
 
       <RightColumn>
         {exam.schools.map((x) => (
-          <div>{x}</div>
+          <div key={x}>{x}</div>
         ))}
       </RightColumn>
     </MainPage>
