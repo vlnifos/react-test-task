@@ -7,6 +7,7 @@ import {
   setAnswerData,
 } from "features/add-question/addQuestionSlice"
 import styled from "styled-components"
+import { ImageSelector } from "./ImageSelector"
 import { MultiChoice } from "./MultiChoice"
 
 export const AddQuestion = (props: any) => {
@@ -14,7 +15,7 @@ export const AddQuestion = (props: any) => {
   const dispatch = useAppDispatch()
 
   const handleChange = (
-    type: "text" | "points" | "comments" | "type",
+    type: "text" | "points" | "comments" | "type" | "images",
     value: any
   ) => dispatch(setQuestionData({ data: value as never, type }))
 
@@ -22,6 +23,29 @@ export const AddQuestion = (props: any) => {
 
   const handleAnswerChange = (id: number, item: any) =>
     dispatch(setAnswerData({ id, item }))
+
+  const handleImageSelect = (img: string) => {
+    const images = [...question.images]
+    images.push(img)
+
+    handleChange("images", images)
+  }
+
+  const handleRemoveImage = (img: string) => {
+    const images = [...question.images]
+
+    const index = images.findIndex((x) => x === img)
+
+    images.splice(index, 1)
+
+    handleChange("images", images)
+  }
+
+  const renderQuestionImages = () => {
+    return question.images.map((x) => (
+      <img key={x} src={x} alt="img" onClick={() => handleRemoveImage(x)} />
+    ))
+  }
 
   return (
     <AddQuestionCOntainer>
@@ -40,6 +64,9 @@ export const AddQuestion = (props: any) => {
           value={question.text}
           onChange={(val) => handleChange("text", val.target.value)}
         />
+        <ImageSelector onImageSelect={(img) => handleImageSelect(img)} />
+
+        {renderQuestionImages()}
       </Section>
       <Section>
         <SectionTitle>

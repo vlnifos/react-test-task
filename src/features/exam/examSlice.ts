@@ -42,7 +42,14 @@ export const examSlice = createSlice({
       state.schools = schools
     },
     addQuestion: (state, action: PayloadAction<Question>) => {
-      state.questions.push(action.payload)
+      const nextId = state.questions[state.questions.length - 1].id + 1
+
+      const question = {
+        ...action.payload,
+        id: nextId,
+      }
+
+      state.questions.push(question)
     },
   },
 })

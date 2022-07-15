@@ -4,6 +4,7 @@ interface MultipleChoiceQuestion {
   points: number
   comments: string
   type: "multiple_choice"
+  images: string[]
   answers: MultipleChoiceAnswer[]
 }
 
@@ -13,6 +14,7 @@ interface MatchingQuestion {
   points: number
   comments: string
   type: "matching"
+  images: string[]
   pairs: MatchingPairs[]
 }
 

@@ -1,3 +1,5 @@
+import { ImageSelector } from "./ImageSelector"
+
 type Props = {
   answers: any[]
   onChange: (id: number, payload: any) => void
@@ -13,15 +15,10 @@ export const MultiChoice = (props: Props) => {
     })
   }
 
-  const handleImageSelect = (item: any, el: any) => {
-    el.preventDefault()
-    const { files } = el.target
-    const localImageUrl = window.URL.createObjectURL(files[0])
-    handleChange(item, "image", localImageUrl)
-
+  const handleImageSelect = (item: any, img: any) => {
     const newItem = { ...item, images: [...item.images] }
 
-    newItem.images.push(localImageUrl)
+    newItem.images.push(img)
 
     props.onChange(item.id, newItem)
   }
@@ -62,12 +59,13 @@ export const MultiChoice = (props: Props) => {
             onChange={(el) => handleChange(x, "text", el.target.value)}
           />
 
-          <input
+          <ImageSelector onImageSelect={(img) => handleImageSelect(x, img)} />
+          {/* <input
             type="file"
             accept="image/gif, image/jpeg, image/png"
             onChange={(el) => handleImageSelect(x, el)}
             alt="answer"
-          />
+          /> */}
         </div>
 
         {renderImages(x)}

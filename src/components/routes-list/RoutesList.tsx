@@ -1,5 +1,5 @@
 import { AddQuestion } from "pages/add-question/AddQuestion"
-import { ExamPage } from "pages/ExamPage"
+import { ExamPage } from "pages/exam-page/ExamPage"
 import { ExamsList } from "pages/ExamsList"
 import React from "react"
 import { Navigate, Route, Routes } from "react-router-dom"

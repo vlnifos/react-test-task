@@ -8,6 +8,7 @@ const initialState: Question = {
   text: "",
   comments: "",
   points: 1,
+  images: [],
   type: "multiple_choice",
   answers: [],
 }
