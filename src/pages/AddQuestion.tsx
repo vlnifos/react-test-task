@@ -1,5 +1,3 @@
 export const AddQuestion = (props: any) => {
-  return (
-    <div>AddQuestion</div>
-  )
+  return <div>AddQuestion</div>
 }

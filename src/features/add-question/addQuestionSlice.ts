@@ -1,14 +1,14 @@
-import { Question } from "utils/types";
+import { Question } from "utils/types"
 
 export interface ExamState {
   head: {
-    grade: string;
-    cource: string;
-    subject: string;
-    time: string;
-  };
-  schools: string[];
-  questions: Question[];
+    grade: string
+    cource: string
+    subject: string
+    time: string
+  }
+  schools: string[]
+  questions: Question[]
 }
 
 const initialState: ExamState = {
@@ -20,4 +20,4 @@ const initialState: ExamState = {
   },
   questions: [],
   schools: [],
-};
+}

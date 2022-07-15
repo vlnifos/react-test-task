@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
-import {  BrowserRouter } from 'react-router-dom';
-import { Layout } from 'components/layout/Layout';
+import React from "react"
+import "./App.css"
+import { BrowserRouter } from "react-router-dom"
+import { Layout } from "components/layout/Layout"
 
 function App() {
   return (
@@ -55,7 +55,7 @@ function App() {
     //     </span>
     //   </header>
     // </div>
-  );
+  )
 }
 
-export default App;
+export default App
