@@ -10,7 +10,7 @@ export const Breadcrumbs = (props: Props) => {
     <FlexRow>
       <img src={props.imageSrc} alt="" />
       {props.texts.map((x, index) => (
-        <FlexRow>
+        <FlexRow key={x}>
           {x}
           {index !== props.texts.length - 1 && <span>{">"}</span>}
         </FlexRow>

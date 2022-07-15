@@ -1,4 +1,5 @@
 interface MultipleChoiceQuestion {
+  id: number
   text: string
   points: number
   comments: string
@@ -7,6 +8,7 @@ interface MultipleChoiceQuestion {
 }
 
 interface MatchingQuestion {
+  id: number
   text: string
   points: number
   comments: string
@@ -15,14 +17,16 @@ interface MatchingQuestion {
 }
 
 export type MultipleChoiceAnswer = {
+  id: number
   isCorrectAnswer: boolean
   text: string
-  imageSrc: string
+  images: string[]
 }
 
 type PairDetail = {
+  id: number
   text: string
-  imageSrc: string
+  images: string[]
 }
 export type MatchingPairs = {
   id: number
