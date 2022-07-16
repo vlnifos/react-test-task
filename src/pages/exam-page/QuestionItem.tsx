@@ -1,5 +1,8 @@
+import { Card } from "components/card/Card"
+import { Img } from "components/Img/Img"
 import { useState } from "react"
 import styled from "styled-components"
+import { humanReadableQuestionType } from "utils/consts"
 import { Question } from "utils/types"
 
 type Props = {
@@ -11,13 +14,13 @@ export const QuestionItem = (props: Props) => {
 
   const { id, type, text, images, points } = props.question
 
-  const renderImages = () => images.map((x) => <img src={x} alt="img" />)
+  const renderImages = () => images.map((x) => <Img src={x} alt="img" />)
 
   return (
-    <div>
+    <Card>
       <FlexRowJustifyBetween>
         <span>{id}</span>
-        <span>{type}</span>
+        <span>{humanReadableQuestionType[type]}</span>
         <span>{points}</span>
         <span>ACTIONS</span>
       </FlexRowJustifyBetween>
@@ -33,9 +36,9 @@ export const QuestionItem = (props: Props) => {
       )}
 
       <button onClick={() => setIsShowAnswers(!isShowAnswers)}>
-        {isShowAnswers ? "Hide answers" : "Show answers"}
+        {isShowAnswers ? "Hide Answer(s)" : "Show Answer(s)"}
       </button>
-    </div>
+    </Card>
   )
 }
 

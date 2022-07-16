@@ -21,10 +21,8 @@ type MainMenuItemProps = {
 }
 const MainMenuItem = styled.div<MainMenuItemProps>`
   display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   border-radius: 4px;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};

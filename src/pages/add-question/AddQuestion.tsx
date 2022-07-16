@@ -7,6 +7,7 @@ import {
   setAnswerData,
 } from "features/add-question/addQuestionSlice"
 import styled from "styled-components"
+import { humanReadableQuestionType } from "utils/consts"
 import { ImageSelector } from "./ImageSelector"
 import { Matching } from "./Matching"
 import { MultiChoice } from "./MultiChoice"
@@ -55,8 +56,14 @@ export const AddQuestion = (props: any) => {
       <Section>
         <SectionTitle>1. Question Type</SectionTitle>
         <Dropdown
-          selected={question.type}
-          options={["multiple_choice", "matching"]}
+          selected={humanReadableQuestionType[question.type]}
+          options={[
+            {
+              id: "multiple_choice",
+              title: humanReadableQuestionType["multiple_choice"],
+            },
+            { id: "matching", title: humanReadableQuestionType["matching"] },
+          ]}
           handleSelect={(x) => handleChange("type", x)}
         />
       </Section>

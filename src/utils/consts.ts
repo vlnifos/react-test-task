@@ -15,9 +15,8 @@ export const routes = {
   examById: "/exams/:id",
   addQuestion: "/exams/:id/addquestion",
 }
-//  [
-//   { path: "/" },
-//   { path: "/exams" },
-//   { path: "/exams/:id" },
-//   { path: "/exams/:id/addquestion" },
-// ]
+
+export const humanReadableQuestionType = {
+  multiple_choice: "Multiple choice",
+  matching: "Matching",
+}

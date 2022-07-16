@@ -1,3 +1,4 @@
+import { Avatar } from "components/avatar/Avatar"
 import { useLocation } from "react-router"
 import styled from "styled-components"
 import { NavBarItem, NavBarItemProps } from "./NavBarItem"
@@ -27,34 +28,38 @@ export const NavBar = (props: any) => {
   console.log("location", location)
 
   return (
-    <NavBarContainer>
-      <FullHeight>
-        <FlexColumn>
-          {items.map((x) => (
+    <FullScreenHeight>
+      <NavBarContainer>
+        <FullHeight>
+          <FlexColumn>
+            {items.map((x) => (
+              <NavBarItem
+                key={x.routeName}
+                imageSrc={x.imageSrc}
+                routeName={x.routeName}
+                disabled={x.disabled}
+                isActive={x.routeName === "exams"}
+              />
+            ))}
+          </FlexColumn>
+          <FlexColumn>
             <NavBarItem
-              key={x.routeName}
-              imageSrc={x.imageSrc}
-              routeName={x.routeName}
-              disabled={x.disabled}
-              isActive={x.routeName === "exams"}
+              key="documents"
+              imageSrc="https://file.rendit.io/n/zUGFVLuBxudyHVlOwTln.svg"
+              routeName="settings"
             />
-          ))}
-        </FlexColumn>
-        <FlexColumn>
-          <NavBarItem
-            key="documents"
-            imageSrc="https://file.rendit.io/n/zUGFVLuBxudyHVlOwTln.svg"
-            routeName="settings"
-          />
 
-          <NavBarItem
-            key="settings"
-            imageSrc="https://file.rendit.io/n/9T5tBmDxsCD3Mgb6GXNV.svg"
-            routeName="settings"
-          />
-        </FlexColumn>
-      </FullHeight>
-    </NavBarContainer>
+            <NavBarItem
+              key="settings"
+              imageSrc="https://file.rendit.io/n/9T5tBmDxsCD3Mgb6GXNV.svg"
+              routeName="settings"
+            />
+
+            <Avatar />
+          </FlexColumn>
+        </FullHeight>
+      </NavBarContainer>
+    </FullScreenHeight>
   )
 }
 
@@ -62,6 +67,12 @@ export const NavBar = (props: any) => {
 const NavBarContainer = styled.div`
   border: 1px solid #d0e8ef;
   border-width: 1px 1px 0 0;
+  padding: 0 10px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const FlexColumn = styled.div`
@@ -70,8 +81,14 @@ const FlexColumn = styled.div`
   justify-content: space-between;
 `
 
-const FullHeight = styled.div`
+const FullScreenHeight = styled.div`
   height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+`
+
+const FullHeight = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

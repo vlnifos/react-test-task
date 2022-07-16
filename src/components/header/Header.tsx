@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { useCurrentRoute } from "utils/hooks"
 import { ExamHeader } from "./ExamHeader"
 import { AddQuestionHeader } from "./AddQuestionHeader"
+import { routes } from "utils/consts"
 
 export const Header = (props: any) => {
   const {
@@ -11,9 +12,9 @@ export const Header = (props: any) => {
   } = useCurrentRoute()
 
   const routeName = {
-    "/": "home",
-    "/exams/:id": "exam",
-    "/exams/:id/addquestion": "addQuestion",
+    [routes.home]: "home",
+    [routes.examById]: "exam",
+    [routes.addQuestion]: "addQuestion",
   }[path || "/"]!
 
   const breadcrumbs = {
@@ -23,18 +24,19 @@ export const Header = (props: any) => {
   }[routeName] as string[]
 
   return (
-    <FlexRowSpaceBetween>
+    <HeaderStyled>
       <div>
         <Breadcrumbs texts={breadcrumbs} />
         <input type="text" value={"SOmething"} onChange={() => {}} />
       </div>
 
       {routeName === "exam" ? <ExamHeader /> : <AddQuestionHeader />}
-    </FlexRowSpaceBetween>
+    </HeaderStyled>
   )
 }
 
-const FlexRowSpaceBetween = styled.div`
+const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 20px;
 `

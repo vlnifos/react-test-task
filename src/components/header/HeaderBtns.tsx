@@ -14,17 +14,38 @@ type Props = {
 export const HeaderBtns = (props: Props) => {
   return (
     <FlexRow>
-      <button onClick={props.cancelBtn.handler}>
-        {props.cancelBtn.text || "Cancel"}
-      </button>
+      <Button
+        btnType="cancel"
+        style={{ marginRight: "15px" }}
+        onClick={props.cancelBtn.handler}
+      >
+        <span>{props.cancelBtn.text || "Cancel"}</span>
+      </Button>
 
-      <button onClick={props.submitBtn.handler}>
-        {props.submitBtn.text || "Submit"}
-      </button>
+      <Button btnType="submit" onClick={props.submitBtn.handler}>
+        <span>{props.submitBtn.text || "Submit"}</span>
+      </Button>
     </FlexRow>
   )
 }
 
 const FlexRow = styled.div`
   display: flex;
+`
+
+const Button = styled.button<{ btnType: "submit" | "cancel" }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${(props) =>
+    props.btnType === "submit" ? "#4282AA" : "transparent"};
+  color: ${(props) => (props.btnType === "submit" ? "white" : "#777777")};
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &: hover {
+    opacity: 70%;
+  }
 `
