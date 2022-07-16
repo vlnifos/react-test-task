@@ -1,5 +1,9 @@
 import { useAppDispatch, useAppSelector } from "app/hooks"
+import { OutlinedBtn } from "components/button/Button"
 import { Dropdown } from "components/dropdown/Dropdown"
+import { Icon } from "components/icon/Icon"
+import { Img } from "components/Img/Img"
+import { InputWithActions } from "components/input/InputWithActions"
 import {
   addAnswer,
   selectQuestion,
@@ -45,14 +49,15 @@ export const AddQuestion = (props: any) => {
 
   const renderQuestionImages = () => {
     return question.images.map((x) => (
-      <img key={x} src={x} alt="img" onClick={() => handleRemoveImage(x)} />
+      <Img key={x} src={x} alt="img" onClick={() => handleRemoveImage(x)} />
     ))
   }
 
   const handleAddMatchingPair = () => {}
 
   return (
-    <AddQuestionCOntainer>
+    <AddQuestionContainer>
+      {/* Question type */}
       <Section>
         <SectionTitle>1. Question Type</SectionTitle>
         <Dropdown
@@ -67,21 +72,37 @@ export const AddQuestion = (props: any) => {
           handleSelect={(x) => handleChange("type", x)}
         />
       </Section>
+
+      {/* Question */}
       <Section>
         <SectionTitle>2. Question</SectionTitle>
-        <input
-          type="text"
+
+        <InputWithActions
+          placeholder="Question Text..."
           value={question.text}
+          actionLeft={
+            <Icon
+              size="large"
+              src="https://file.rendit.io/n/rnPoD4SZFti2FUFynQA8.png"
+            />
+          }
+          actionRight={
+            <ImageSelector onImageSelect={(img) => handleImageSelect(img)} />
+          }
           onChange={(val) => handleChange("text", val.target.value)}
         />
-        <ImageSelector onImageSelect={(img) => handleImageSelect(img)} />
 
         {renderQuestionImages()}
       </Section>
+
+      {/* Answers */}
       <Section>
         <SectionTitle>
           3. Answers
-          <SectionTitleThin>(please tick the correct answers)</SectionTitleThin>
+          <SectionTitleThin>
+            {" "}
+            (please tick the correct answers)
+          </SectionTitleThin>
         </SectionTitle>
 
         {question.type === "multiple_choice" ? (
@@ -98,31 +119,47 @@ export const AddQuestion = (props: any) => {
           />
         )}
       </Section>
+
+      {/* Points */}
       <Section>
         <SectionTitle>4. Points</SectionTitle>
-        Points
-        <button>Change</button>
+        <Text>{question.points} point for the right answer</Text>
+        <OutlinedBtn>Change</OutlinedBtn>
       </Section>
+
+      {/* Comments */}
       <Section>
         <SectionTitle>5. Comments</SectionTitle>
-        <input
-          type="text"
+        <InputWithActions
+          placeholder="Teacher comment..."
           value={question.comments}
+          actionLeft={
+            <Icon
+              size="large"
+              src="https://file.rendit.io/n/YBiIQ6ifa5ZC5rXNXWCy.png"
+            />
+          }
           onChange={(val) => handleChange("comments", val.target.value)}
         />
       </Section>
-    </AddQuestionCOntainer>
+    </AddQuestionContainer>
   )
 }
 
-const AddQuestionCOntainer = styled.div`
+const AddQuestionContainer = styled.div`
   width: 50%;
   margin: 0 auto;
 `
 const SectionTitle = styled.div`
   color: #777777;
+  margin-top: 15px;
+  margin-bottom: 5px;
 `
 const SectionTitleThin = styled.span`
+  color: #777777;
+  font-size: 14px;
+`
+const Text = styled.span`
   color: #777777;
 `
 const Section = styled.div``

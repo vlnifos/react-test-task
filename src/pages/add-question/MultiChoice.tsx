@@ -1,4 +1,8 @@
+import { Img } from "components/Img/Img"
+import { InputWithActions } from "components/input/InputWithActions"
+import { OutlinedBtn } from "components/button/Button"
 import { ImageSelector } from "./ImageSelector"
+import styled from "styled-components"
 
 type Props = {
   answers: any[]
@@ -33,7 +37,7 @@ export const MultiChoice = (props: Props) => {
 
   const renderImages = (item: any) =>
     item.images.map((el: string) => (
-      <img
+      <Img
         src={el}
         alt=""
         key={el}
@@ -43,40 +47,38 @@ export const MultiChoice = (props: Props) => {
 
   const renderAnswers = () => {
     return props.answers.map((x) => (
-      <div key={x.id}>
-        <div>
-          <input
-            type="checkbox"
-            checked={x.isCorrectAnswer}
-            onChange={(el) =>
-              handleChange(x, "isCorrectAnswer", el.target.checked)
-            }
-          />
-
-          <input
-            type="text"
-            value={x.text}
-            onChange={(el) => handleChange(x, "text", el.target.value)}
-          />
-
-          <ImageSelector onImageSelect={(img) => handleImageSelect(x, img)} />
-          {/* <input
-            type="file"
-            accept="image/gif, image/jpeg, image/png"
-            onChange={(el) => handleImageSelect(x, el)}
-            alt="answer"
-          /> */}
-        </div>
+      <AnswerContainer key={x.id}>
+        <InputWithActions
+          placeholder="Answer Text..."
+          value={x.text}
+          onChange={(el) => handleChange(x, "text", el.target.value)}
+          actionLeft={
+            <input
+              type="checkbox"
+              checked={x.isCorrectAnswer}
+              onChange={(el) =>
+                handleChange(x, "isCorrectAnswer", el.target.checked)
+              }
+            />
+          }
+          actionRight={
+            <ImageSelector onImageSelect={(img) => handleImageSelect(x, img)} />
+          }
+        />
 
         {renderImages(x)}
-      </div>
+      </AnswerContainer>
     ))
   }
 
   return (
     <div>
       {renderAnswers()}
-      <button onClick={props.addAnswer}>Add answer</button>
+      <OutlinedBtn onClick={props.addAnswer}>Add answer</OutlinedBtn>
     </div>
   )
 }
+
+const AnswerContainer = styled.div`
+  margin-bottom: 10px;
+`

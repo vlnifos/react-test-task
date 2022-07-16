@@ -13,7 +13,7 @@ export const Schools = (props: Props) => {
     <div>
       <Head>
         <Icon
-          size="normal"
+          size="large"
           src={"https://file.rendit.io/n/gsQWqT0m4kgZ8ux8A6Eo.png"}
         />
         <Title>Assigned Teachers</Title>

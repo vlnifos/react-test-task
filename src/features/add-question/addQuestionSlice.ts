@@ -9,7 +9,14 @@ const initialState: Question = {
   points: 1,
   images: [],
   type: "multiple_choice",
-  answers: [],
+  answers: [
+    {
+      id: 1,
+      images: [],
+      isCorrectAnswer: false,
+      text: "",
+    },
+  ],
 }
 
 type SetQuestionDataType = {

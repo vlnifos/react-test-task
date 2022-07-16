@@ -1,8 +1,13 @@
+import { Icon } from "components/icon/Icon"
+import { useRef } from "react"
+import styled from "styled-components"
+
 type Props = {
   onImageSelect: (img: string) => void
 }
 
 export const ImageSelector = (props: Props) => {
+  const ref = useRef(null)
   const handleImageSelect = (el: any) => {
     el.preventDefault()
     const { files } = el.target
@@ -10,12 +15,40 @@ export const ImageSelector = (props: Props) => {
     props.onImageSelect(localImageUrl)
   }
 
+  const handleClick = () => {
+    if (ref && ref.current) {
+      const current: any = ref.current
+
+      current.click()
+    }
+  }
+
   return (
-    <input
-      type="file"
-      accept="image/gif, image/jpeg, image/png"
-      onChange={handleImageSelect}
-      alt="answer"
-    />
+    <span>
+      <IconContainer>
+        <Icon
+          size="medium"
+          src="https://file.rendit.io/n/WcTwfyxGNhVZ6EIDUUIW.svg"
+          onClick={handleClick}
+        />
+      </IconContainer>
+
+      <input
+        style={{ display: "none" }}
+        type="file"
+        ref={ref}
+        accept="image/gif, image/jpeg, image/png"
+        onChange={handleImageSelect}
+        alt="answer"
+      />
+    </span>
   )
 }
+
+const IconContainer = styled.span`
+  cursor: pointer;
+
+  &:hover {
+    opacity: 70%;
+  }
+`
