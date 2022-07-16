@@ -36,7 +36,9 @@ export const Header = (props: any) => {
   return (
     <HeaderStyled>
       <div>
-        <Breadcrumbs texts={breadcrumbs.texts} icon={breadcrumbs.icon} />
+        {breadcrumbs && (
+          <Breadcrumbs texts={breadcrumbs.texts} icon={breadcrumbs.icon} />
+        )}
         <EditableTitle title={"Editable Title"} onChange={() => {}} />
       </div>
 
