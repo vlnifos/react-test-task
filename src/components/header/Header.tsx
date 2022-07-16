@@ -4,6 +4,7 @@ import { useCurrentRoute } from "utils/hooks"
 import { ExamHeader } from "./ExamHeader"
 import { AddQuestionHeader } from "./AddQuestionHeader"
 import { routes } from "utils/consts"
+import { EditableTitle } from "components/editable-title/EditableTitle"
 
 export const Header = (props: any) => {
   const {
@@ -18,16 +19,25 @@ export const Header = (props: any) => {
   }[path || "/"]!
 
   const breadcrumbs = {
-    home: ["Home"],
-    exam: ["Exams", `Exam id: ${params.id}`],
-    addQuestion: ["Exams", `Exam id: ${params.id}`, "New question"],
-  }[routeName] as string[]
+    home: {
+      icon: "https://file.rendit.io/n/ifOTZoUQ9lrq2TQaPvS7.png",
+      texts: ["Home"],
+    },
+    exam: {
+      icon: "https://file.rendit.io/n/ifOTZoUQ9lrq2TQaPvS7.png",
+      texts: ["Exams", `Exam id: ${params.id}`],
+    },
+    addQuestion: {
+      icon: "https://file.rendit.io/n/ifOTZoUQ9lrq2TQaPvS7.png",
+      texts: ["Exams", `Exam id: ${params.id}`, "New question"],
+    },
+  }[routeName]!
 
   return (
     <HeaderStyled>
       <div>
-        <Breadcrumbs texts={breadcrumbs} />
-        <input type="text" value={"SOmething"} onChange={() => {}} />
+        <Breadcrumbs texts={breadcrumbs.texts} icon={breadcrumbs.icon} />
+        <EditableTitle title={"Editable Title"} onChange={() => {}} />
       </div>
 
       {routeName === "exam" ? <ExamHeader /> : <AddQuestionHeader />}

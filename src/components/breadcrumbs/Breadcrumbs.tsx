@@ -1,14 +1,20 @@
+import { Icon } from "components/icon/Icon"
 import styled from "styled-components"
 
 type Props = {
-  imageSrc?: string
+  icon?: string
   texts: string[]
 }
 
 export const Breadcrumbs = (props: Props) => {
   return (
     <FlexRow>
-      <img src={props.imageSrc} alt="" />
+      <Icon
+        size="small"
+        src={props.icon}
+        alt=""
+        style={{ marginRight: "10px" }}
+      />
       {props.texts.map((x, index) => (
         <FlexRow key={x}>
           {x}
@@ -21,4 +27,5 @@ export const Breadcrumbs = (props: Props) => {
 
 const FlexRow = styled.div`
   display: flex;
+  align-items: center;
 `
