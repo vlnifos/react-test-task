@@ -1,17 +1,19 @@
 import { Avatar } from "components/avatar/Avatar"
 import { useLocation } from "react-router"
 import styled from "styled-components"
+import { routes } from "utils/consts"
+import { useCurrentRoute } from "utils/hooks"
 import { NavBarItem, NavBarItemProps } from "./NavBarItem"
 
 const items: NavBarItemProps[] = [
   {
-    routeName: "analytics",
+    routeName: "home",
     imageSrc: "https://file.rendit.io/n/buEPcxA6SKcrccfsibRF.svg",
 
     disabled: true,
   },
   {
-    routeName: "book",
+    routeName: "analytics",
     imageSrc: "https://file.rendit.io/n/0FhKrN6xkwtHtF9HLSMf.svg",
     disabled: true,
   },
@@ -21,11 +23,15 @@ const items: NavBarItemProps[] = [
   },
 ]
 
-export const NavBar = (props: any) => {
-  // TODO: location name === x.routeName
-  const location = useLocation()
+const paths = {
+  [routes.home]: "home",
+  [routes.exams]: "exams",
+  [routes.examById]: "exams",
+  [routes.addQuestion]: "exams",
+}
 
-  console.log("location", location)
+export const NavBar = (props: any) => {
+  const route = useCurrentRoute()
 
   return (
     <FullScreenHeight>
@@ -38,7 +44,7 @@ export const NavBar = (props: any) => {
                 imageSrc={x.imageSrc}
                 routeName={x.routeName}
                 disabled={x.disabled}
-                isActive={x.routeName === "exams"}
+                isActive={x.routeName === paths[route.route.path || ""]}
               />
             ))}
           </FlexColumn>
@@ -63,11 +69,12 @@ export const NavBar = (props: any) => {
   )
 }
 
-// TODO: styles refactor
 const NavBarContainer = styled.div`
   border: 1px solid #d0e8ef;
   border-width: 1px 1px 0 0;
+
   padding: 0 10px;
+
   height: 100%;
 
   display: flex;
@@ -84,6 +91,7 @@ const FlexColumn = styled.div`
 const FullScreenHeight = styled.div`
   height: 100vh;
   max-height: 100vh;
+
   overflow: hidden;
 `
 

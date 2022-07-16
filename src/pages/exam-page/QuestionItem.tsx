@@ -24,6 +24,7 @@ export const QuestionItem = (props: Props) => {
         <span>{points}</span>
         <span>ACTIONS</span>
       </FlexRowJustifyBetween>
+
       <div>
         <span>{text}</span>
         <div>{renderImages()}</div>

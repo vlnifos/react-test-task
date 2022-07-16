@@ -17,11 +17,14 @@ export const HeadCard = (props: Props) => {
         <FlexColumn>
           <FlexRow>
             <Icon size="large" src={x.img} />
+
             <FlexColumn>
               <Title>{x.title}</Title>
               <SubTitle>{x.subtitle}</SubTitle>
             </FlexColumn>
           </FlexRow>
+
+          {/* Divider */}
           {index !== props.rows.length - 1 && (
             <HorizontalLine style={{ margin: "20px 0" }} />
           )}

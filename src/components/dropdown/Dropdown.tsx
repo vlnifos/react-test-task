@@ -5,7 +5,7 @@ import styled from "styled-components"
 type Option = {
   id: string
   title: string
-  disabled: boolean
+  disabled?: boolean
 }
 
 type Props = {

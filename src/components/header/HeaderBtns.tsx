@@ -37,12 +37,17 @@ const Button = styled.button<{ btnType: "submit" | "cancel" }>`
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: ${(props) =>
     props.btnType === "submit" ? "#4282AA" : "transparent"};
+
   color: ${(props) => (props.btnType === "submit" ? "white" : "#777777")};
+
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
+
+  padding: 10px 20px;
+
   cursor: pointer;
 
   &: hover {

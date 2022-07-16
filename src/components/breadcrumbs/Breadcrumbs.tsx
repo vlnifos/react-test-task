@@ -17,7 +17,7 @@ export const Breadcrumbs = (props: Props) => {
       />
       {props.texts.map((x, index) => (
         <FlexRow key={x}>
-          {x}
+          <span>{x}</span>
           {index !== props.texts.length - 1 && <span>{">"}</span>}
         </FlexRow>
       ))}

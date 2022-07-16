@@ -21,13 +21,18 @@ export const Input = (props: Props) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
+
   background: white;
+
   border-radius: 5px;
+
   padding: 10px;
 `
 const StyledInput = styled.input`
   border: none;
+
   background: transparent;
+
   height: 100%;
   width: 100%;
 

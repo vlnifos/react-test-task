@@ -48,5 +48,6 @@ export const Header = (props: any) => {
 const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
+
   padding: 20px;
 `

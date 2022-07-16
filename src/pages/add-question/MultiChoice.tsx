@@ -12,7 +12,6 @@ type Props = {
 
 export const MultiChoice = (props: Props) => {
   const handleChange = (item: any, type: string, value: any) => {
-    console.log("handleChange", item, type, value)
     props.onChange(item.id, {
       ...item,
       [type]: value,

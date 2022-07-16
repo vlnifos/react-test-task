@@ -8,6 +8,7 @@ type Props = {
 
 export const ImageSelector = (props: Props) => {
   const ref = useRef(null)
+
   const handleImageSelect = (el: any) => {
     el.preventDefault()
     const { files } = el.target

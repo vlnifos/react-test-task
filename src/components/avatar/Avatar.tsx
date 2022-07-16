@@ -1,11 +1,7 @@
 import styled from "styled-components"
 
 export const Avatar = () => {
-  return (
-    <div>
-      <Img src="https://ui-avatars.com/api/?background=random" alt="" />
-    </div>
-  )
+  return <Img src="https://ui-avatars.com/api/?background=random" alt="" />
 }
 
 const Img = styled.img`

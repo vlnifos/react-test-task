@@ -148,15 +148,18 @@ export const AddQuestion = (props: any) => {
 
 const AddQuestionContainer = styled.div`
   width: 50%;
+
   margin: 0 auto;
 `
 const SectionTitle = styled.div`
   color: #777777;
+
   margin-top: 15px;
   margin-bottom: 5px;
 `
 const SectionTitleThin = styled.span`
   color: #777777;
+
   font-size: 14px;
 `
 const Text = styled.span`

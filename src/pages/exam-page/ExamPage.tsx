@@ -1,8 +1,6 @@
 import { useAppSelector } from "app/hooks"
 import { OutlinedBtn } from "components/button/Button"
-import { useGetExamDataQuery } from "features/exam/examApi"
 import { selectExam } from "features/exam/examSlice"
-import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router"
 import styled from "styled-components"
 import { HeadCard } from "./HeadCard"
@@ -13,14 +11,6 @@ export const ExamPage = (props: any) => {
   const params = useParams()
   const navigate = useNavigate()
   const exam = useAppSelector(selectExam)
-
-  console.log("paramsExam", params)
-
-  const query = useGetExamDataQuery("nothing")
-
-  useEffect(() => {
-    console.log("qeury eXampPAge", query.data)
-  }, [query])
 
   const navigateToNewQuestion = () =>
     navigate(`/exams/${params.id}/addquestion`)
@@ -55,6 +45,7 @@ export const ExamPage = (props: any) => {
               ]}
             />
           </ExamDetailsLeft>
+
           <ExamDetailsRight>
             {/* Cource & Time */}
             <HeadCard
@@ -89,6 +80,7 @@ export const ExamPage = (props: any) => {
               <SubTitle>Standart</SubTitle>
               <SubTitle>Actions</SubTitle>
             </FlexRowSpaceBetween>
+
             {renderQuestions()}
           </div>
         </QuestionsContainer>

@@ -17,11 +17,15 @@ export const EditableTitle = (props: Props) => {
 const Input = styled.input`
   padding: 0;
   margin: 0;
+
   border: none;
+
   background: transparent;
+
   font-size: 30px;
   font-weight: 700;
   line-height: 36px;
+
   color: #4282aa;
 
   &:hover {

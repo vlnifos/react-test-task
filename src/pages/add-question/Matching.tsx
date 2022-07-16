@@ -16,6 +16,7 @@ export const Matching = (props: Props) => {
           value={x.question.text}
           onChange={(el) => props.onChange(x.id, el.target.value)}
         />
+
         <Input
           value={x.answer.text}
           onChange={(el) => props.onChange(x.id, el.target.value)}

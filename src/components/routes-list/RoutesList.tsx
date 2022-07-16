@@ -8,7 +8,10 @@ import { routes } from "utils/consts"
 export const RoutesList = (props: any) => {
   return (
     <Routes>
-      <Route path={routes.home} element={<Navigate to="/exams" replace />} />
+      <Route
+        path={routes.home}
+        element={<Navigate to={routes.exams} replace />}
+      />
       <Route path={routes.exams} element={<ExamsList />} />
       <Route path={routes.examById} element={<ExamPage />} />
       <Route path={routes.addQuestion} element={<AddQuestion />} />

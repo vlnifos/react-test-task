@@ -14,6 +14,7 @@ export const routes = {
   exams: "/exams",
   examById: "/exams/:id",
   addQuestion: "/exams/:id/addquestion",
+  analytics: "/analytics",
 }
 
 export const humanReadableQuestionType = {
