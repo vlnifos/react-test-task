@@ -54,12 +54,15 @@ const Title = styled.span`
 
 const SchoolsContainer = styled.div`
   margin-bottom: 10px;
+  padding: 0 10px;
 `
 
 const SchoolItem = styled.div`
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+
+  margin: 10px 0;
 
   color: #777777;
 
