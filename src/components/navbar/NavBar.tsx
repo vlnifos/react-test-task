@@ -34,44 +34,48 @@ export const NavBar = (props: any) => {
   const route = useCurrentRoute()
 
   return (
-    <FullScreenHeight>
-      <NavBarContainer>
-        <FullHeight>
-          <FlexColumn>
-            {items.map((x) => (
+    <PositionFixed>
+      <FullScreenHeight>
+        <NavBarContainer>
+          <FullHeight>
+            <FlexColumn>
+              {items.map((x) => (
+                <NavBarItem
+                  key={x.routeName}
+                  imageSrc={x.imageSrc}
+                  routeName={x.routeName}
+                  disabled={x.disabled}
+                  isActive={x.routeName === paths[route.route.path || ""]}
+                />
+              ))}
+            </FlexColumn>
+            <FlexColumn>
               <NavBarItem
-                key={x.routeName}
-                imageSrc={x.imageSrc}
-                routeName={x.routeName}
-                disabled={x.disabled}
-                isActive={x.routeName === paths[route.route.path || ""]}
+                key="documents"
+                imageSrc="https://file.rendit.io/n/zUGFVLuBxudyHVlOwTln.svg"
+                routeName="settings"
               />
-            ))}
-          </FlexColumn>
-          <FlexColumn>
-            <NavBarItem
-              key="documents"
-              imageSrc="https://file.rendit.io/n/zUGFVLuBxudyHVlOwTln.svg"
-              routeName="settings"
-            />
 
-            <NavBarItem
-              key="settings"
-              imageSrc="https://file.rendit.io/n/9T5tBmDxsCD3Mgb6GXNV.svg"
-              routeName="settings"
-            />
+              <NavBarItem
+                key="settings"
+                imageSrc="https://file.rendit.io/n/9T5tBmDxsCD3Mgb6GXNV.svg"
+                routeName="settings"
+              />
 
-            <Avatar />
-          </FlexColumn>
-        </FullHeight>
-      </NavBarContainer>
-    </FullScreenHeight>
+              <Avatar />
+            </FlexColumn>
+          </FullHeight>
+        </NavBarContainer>
+      </FullScreenHeight>
+    </PositionFixed>
   )
 }
 
 const NavBarContainer = styled.div`
   border: 1px solid #d0e8ef;
   border-width: 1px 1px 0 0;
+
+  background: white;
 
   padding: 0 10px;
 
@@ -100,4 +104,8 @@ const FullHeight = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`
+
+const PositionFixed = styled.div`
+  position: fixed;
 `

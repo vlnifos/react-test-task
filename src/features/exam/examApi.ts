@@ -29,14 +29,11 @@ export const examApi = createApi({
         { cacheDataLoaded, updateCachedData, dispatch, cacheEntryRemoved }
       ) {
         try {
-          console.log("qwe")
           await cacheDataLoaded
-          console.log("qwe123123")
 
           const socket = io(process.env.REACT_APP_API_URL || "")
 
           const updateState = (payload: any) => {
-            console.log("upadtesTTae", payload)
             updateCachedData((state) => {
               Object.assign(state, payload)
 

@@ -20,5 +20,9 @@ const Row = styled.div`
 `
 const MainPage = styled.div`
   width: 100%;
+  min-height: 100vh;
+
   background: #e3edf2;
+
+  padding-left: 75px;
 `

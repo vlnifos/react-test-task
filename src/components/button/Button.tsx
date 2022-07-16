@@ -23,3 +23,10 @@ export const OutlinedBtn = styled.button`
     opacity: 70%;
   }
 `
+
+export const SoloBtn = styled.button`
+  color: #4282aa;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+`
