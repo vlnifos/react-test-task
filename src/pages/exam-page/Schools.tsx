@@ -1,6 +1,8 @@
 import { HorizontalLine } from "components/horizontal-line/HorizontalLine"
 import { Icon } from "components/icon/Icon"
+import { OutlinedBtn } from "components/button/Button"
 import styled from "styled-components"
+import { Input } from "components/input/Input"
 
 type Props = {
   schools: string[]
@@ -10,17 +12,28 @@ export const Schools = (props: Props) => {
   return (
     <div>
       <Head>
-        <Icon src={"https://file.rendit.io/n/gsQWqT0m4kgZ8ux8A6Eo.png"} />
+        <Icon
+          size="normal"
+          src={"https://file.rendit.io/n/gsQWqT0m4kgZ8ux8A6Eo.png"}
+        />
         <Title>Assigned Teachers</Title>
       </Head>
 
       <HorizontalLine />
 
-      <div>
+      <Input />
+
+      <SchoolsContainer>
         {props.schools.map((x) => (
-          <div key={x}>{x}</div>
+          <SchoolItem key={x}>
+            <span>{x}</span>
+
+            <input type="checkbox" defaultChecked={true} disabled />
+          </SchoolItem>
         ))}
-      </div>
+      </SchoolsContainer>
+
+      <OutlinedBtn style={{ width: "100%" }}>Assign To Class</OutlinedBtn>
     </div>
   )
 }
@@ -37,4 +50,20 @@ const Title = styled.span`
   margin-left: 10px;
   font-size: 12px;
   color: #4282aa;
+`
+
+const SchoolsContainer = styled.div`
+  margin-bottom: 10px;
+`
+
+const SchoolItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  color: #777777;
+
+  &:hover {
+    opacity: 70%;
+  }
 `

@@ -1,4 +1,5 @@
 import { useAppSelector } from "app/hooks"
+import { OutlinedBtn } from "components/button/Button"
 import { useGetExamDataQuery } from "features/exam/examApi"
 import { selectExam } from "features/exam/examSlice"
 import { useEffect } from "react"
@@ -77,9 +78,9 @@ export const ExamPage = (props: any) => {
           <FlexRowSpaceBetween>
             <span>Questions ({exam.questions.length})</span>
 
-            <AddQuestionBtn onClick={navigateToNewQuestion}>
+            <OutlinedBtn onClick={navigateToNewQuestion}>
               + Add question
-            </AddQuestionBtn>
+            </OutlinedBtn>
           </FlexRowSpaceBetween>
           <div style={{ marginTop: "20px" }}>
             <FlexRowSpaceBetween style={{ marginBottom: "15px" }}>
@@ -105,26 +106,7 @@ const FlexRowSpaceBetween = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-const AddQuestionBtn = styled.button`
-  padding: 10px;
-  background: none;
-  color: #4282aa;
-  &: hover {
-    opacity: 70%;
-  }
 
-  border-color: #4282aa;
-  border-style: solid;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  padding: 8px 16px;
-  border-width: 1px;
-  cursor: pointer;
-`
 const MainPage = styled.div`
   display: flex;
   justify-content: space-between;

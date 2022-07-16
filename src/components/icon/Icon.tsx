@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Icon = styled.img`
-  width: 32px;
-  height: 32px;
+export const Icon = styled.img<{ size: "small" | "normal" }>`
+  width: ${(props) => (props.size === "small" ? "12px" : "32px")};
+  height: ${(props) => (props.size === "small" ? "12px" : "32px")};
 `

@@ -16,7 +16,7 @@ export const HeadCard = (props: Props) => {
       {props.rows.map((x, index) => (
         <FlexColumn>
           <FlexRow>
-            <Icon src={x.img} />
+            <Icon size="normal" src={x.img} />
             <FlexColumn>
               <Title>{x.title}</Title>
               <SubTitle>{x.subtitle}</SubTitle>
