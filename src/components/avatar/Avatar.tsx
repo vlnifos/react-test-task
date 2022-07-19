@@ -7,8 +7,8 @@ export const Avatar = () => {
 const Img = styled.img`
   overflow: hidden;
 
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 
   border-radius: 50%;
   border: 2px solid #b3b8c2;

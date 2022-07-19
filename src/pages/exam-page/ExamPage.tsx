@@ -108,10 +108,10 @@ const MainPage = styled.div`
   padding: 20px;
 `
 const LeftColumn = styled.div`
-  width: 65%;
+  width: 73%;
 `
 const RightColumn = styled.div`
-  width: 33%;
+  width: 25%;
 `
 const ExamDetails = styled.div`
   display: flex;
