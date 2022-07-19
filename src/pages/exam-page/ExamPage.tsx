@@ -76,16 +76,19 @@ export const ExamPage = (props: any) => {
               + Add question
             </OutlinedBtn>
           </FlexRowSpaceBetween>
-          <div style={{ marginTop: "20px" }}>
-            <FlexRowSpaceBetween style={{ marginBottom: "15px" }}>
-              <SubTitle>#</SubTitle>
-              <SubTitle>Question</SubTitle>
-              <SubTitle>Standart</SubTitle>
-              <SubTitle>Actions</SubTitle>
-            </FlexRowSpaceBetween>
 
-            {renderQuestions()}
-          </div>
+          {exam.questions?.length > 1 && (
+            <div style={{ marginTop: "20px" }}>
+              <FlexRowSpaceBetween style={{ marginBottom: "15px" }}>
+                <SubTitle>#</SubTitle>
+                <SubTitle>Question</SubTitle>
+                <SubTitle>Standart</SubTitle>
+                <SubTitle>Actions</SubTitle>
+              </FlexRowSpaceBetween>
+
+              {renderQuestions()}
+            </div>
+          )}
         </QuestionsContainer>
       </LeftColumn>
 

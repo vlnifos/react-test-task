@@ -18,7 +18,7 @@ export const Breadcrumbs = (props: Props) => {
       {props.texts.map((x, index) => (
         <FlexRow key={x}>
           <span>{x}</span>
-          {index !== props.texts.length - 1 && <span>{">"}</span>}
+          {index !== props.texts.length - 1 && <Divider>{">"}</Divider>}
         </FlexRow>
       ))}
     </FlexRow>
@@ -28,4 +28,10 @@ export const Breadcrumbs = (props: Props) => {
 const FlexRow = styled.div`
   display: flex;
   align-items: center;
+
+  color: #727783;
+`
+
+const Divider = styled.span`
+  margin: 0 8px;
 `

@@ -16,8 +16,7 @@ export const QuestionItem = (props: Props) => {
 
   const { id, type, text, images, points, answers } = props.question
 
-  const renderImages = () =>
-    images.map((x) => <Img src={x} alt="img" key={x} />)
+  const renderImages = () => images.map((x) => <Img src={x} key={x} />)
 
   return (
     <Card>

@@ -49,7 +49,13 @@ export const AddQuestion = (props: any) => {
 
   const renderQuestionImages = () => {
     return question.images.map((x) => (
-      <Img key={x} src={x} alt="img" onClick={() => handleRemoveImage(x)} />
+      <Img
+        key={x}
+        src={x}
+        action={{
+          handler: () => handleRemoveImage(x),
+        }}
+      />
     ))
   }
 

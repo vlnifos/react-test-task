@@ -49,6 +49,16 @@ export const ImageSelector = (props: Props) => {
 const IconContainer = styled.span`
   cursor: pointer;
 
+  background: #f5f7fa;
+
+  padding: 2px;
+
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     opacity: 70%;
   }
