@@ -49,7 +49,12 @@ export const OutlinedBtn = styled.button<{
 
 export const SoloBtn = styled.button`
   color: #4282aa;
+
   border: none;
+
   background: transparent;
+
   cursor: pointer;
+
+  padding: 0;
 `
