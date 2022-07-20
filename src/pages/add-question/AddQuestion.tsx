@@ -87,7 +87,7 @@ export const AddQuestion = (props: any) => {
       {/* Question */}
       <SectionTitle>2. Question</SectionTitle>
       <Section>
-        <Card>
+        <Card padding={false}>
           <InputWithActions
             placeholder="Question Text..."
             value={question.text}

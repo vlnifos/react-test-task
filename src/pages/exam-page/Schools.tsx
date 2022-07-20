@@ -3,6 +3,8 @@ import { Icon } from "components/icon/Icon"
 import { OutlinedBtn } from "components/button/Button"
 import styled from "styled-components"
 import { Input } from "components/input/Input"
+import { Checkbox } from "components/checkbox/Checkbox"
+import ArrowRightIcon from "assets/images/arrowRight.svg"
 
 type Props = {
   schools: string[]
@@ -25,16 +27,28 @@ export const Schools = (props: Props) => {
       <Input />
 
       <SchoolsContainer>
+        <SchoolItem>
+          <span>All schools</span>
+
+          <Checkbox checked={false} onChange={() => {}} />
+        </SchoolItem>
+
         {props.schools.map((x) => (
           <SchoolItem key={x}>
-            <span>{x}</span>
+            <FlexRow>
+              <Icon src={ArrowRightIcon} size="medium" />
 
-            <input type="checkbox" defaultChecked={true} disabled />
+              <span>{x}</span>
+            </FlexRow>
+
+            <Checkbox checked={false} onChange={() => {}} />
           </SchoolItem>
         ))}
       </SchoolsContainer>
 
-      <OutlinedBtn style={{ width: "100%" }}>Assign To Class</OutlinedBtn>
+      <OutlinedBtn fullWidth bold>
+        Assign To Class
+      </OutlinedBtn>
     </div>
   )
 }
@@ -56,6 +70,14 @@ const Title = styled.span`
 const SchoolsContainer = styled.div`
   margin-bottom: 10px;
   padding: 0 10px;
+`
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+
+  > span {
+    margin-left: 8px;
+  }
 `
 
 const SchoolItem = styled.div`

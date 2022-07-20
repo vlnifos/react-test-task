@@ -25,7 +25,7 @@ const HiddenCheckbox = styled.input`
 
   outline: none;
 
-  background: white;
+  background: transparent;
 
   width: 15px;
   height: 15px;

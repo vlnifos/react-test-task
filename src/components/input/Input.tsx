@@ -1,5 +1,6 @@
 import { Icon } from "components/icon/Icon"
 import styled from "styled-components"
+import SearchIcon from "assets/images/search.svg"
 
 type Props = {
   value?: string
@@ -9,10 +10,7 @@ type Props = {
 export const Input = (props: Props) => {
   return (
     <Container>
-      <Icon
-        size="small"
-        src="https://file.rendit.io/n/2FqeOjVpV5sC0LyPtpRf.png"
-      />
+      <Icon size="medium" src={SearchIcon} />
       <StyledInput type="text" value={props.value} onChange={props.onChange} />
     </Container>
   )

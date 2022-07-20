@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 type Props = {
   src: string
+  color?: string
   action?: {
     icon?: string
     handler: () => void
@@ -20,6 +21,7 @@ export const Img = (props: Props) => {
         <ActionBtn onClick={props.action.handler}>
           <Icon
             size={"medium"}
+            color={props.color}
             src={
               props.action.icon ||
               "https://file.rendit.io/n/Tv1iXP4lX3eWGWQGSuX3.png"
@@ -47,11 +49,17 @@ const StyledImg = styled.img`
   border-radius: 5px;
 
   object-fit: cover;
+
+  svg {
+    path {
+      fill: blue;
+    }
+  }
 `
 const ActionBtn = styled.span`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1px;
+  right: 0px;
 
   cursor: pointer;
 

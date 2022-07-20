@@ -13,3 +13,7 @@ export const Card = styled.div<{ padding?: boolean; borderColor?: string }>`
 
   border: 1px solid ${(props) => props.borderColor || "#d0e8ef"};
 `
+
+Card.defaultProps = {
+  padding: true,
+}

@@ -54,7 +54,7 @@ export const MultiChoice = (props: Props) => {
   const renderAnswers = () => {
     return props.answers.map((x) => (
       <AnswerContainer key={x.id}>
-        <Card borderColor={x.isCorrectAnswer && "#8CB89F"}>
+        <Card padding={false} borderColor={x.isCorrectAnswer && "#8CB89F"}>
           <InputWithActions
             placeholder="Answer Text..."
             value={x.text}

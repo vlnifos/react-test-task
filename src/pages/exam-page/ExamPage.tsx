@@ -1,5 +1,6 @@
 import { useAppSelector } from "app/hooks"
 import { OutlinedBtn } from "components/button/Button"
+import { Icon } from "components/icon/Icon"
 import { useGetExamDataQuery } from "features/exam/examApi"
 import { selectExam } from "features/exam/examSlice"
 import { useNavigate, useParams } from "react-router"
@@ -7,6 +8,8 @@ import styled from "styled-components"
 import { HeadCard } from "./HeadCard"
 import { QuestionItem } from "./QuestionItem"
 import { Schools } from "./Schools"
+import PlusIcon from "assets/images/plus.svg"
+import { QuestionItemHeader } from "./QuestionItemHeader"
 
 export const ExamPage = (props: any) => {
   const params = useParams()
@@ -73,18 +76,21 @@ export const ExamPage = (props: any) => {
             <span>Questions ({exam.questions.length})</span>
 
             <OutlinedBtn onClick={navigateToNewQuestion}>
-              + Add question
+              <Icon src={PlusIcon} size="small" />
+              <span>Add question</span>
             </OutlinedBtn>
           </FlexRowSpaceBetween>
 
           {exam.questions?.length > 0 && (
             <div style={{ marginTop: "20px" }}>
-              <FlexRowSpaceBetween style={{ marginBottom: "15px" }}>
-                <SubTitle>#</SubTitle>
-                <SubTitle>Question</SubTitle>
-                <SubTitle>Standart</SubTitle>
-                <SubTitle>Actions</SubTitle>
-              </FlexRowSpaceBetween>
+              <div style={{ marginBottom: "15px" }}>
+                <QuestionItemHeader
+                  id={<span>#</span>}
+                  type={<span>Question</span>}
+                  standart={<span>Standart</span>}
+                  actions={<span>Actions</span>}
+                />
+              </div>
 
               {renderQuestions()}
             </div>
@@ -131,7 +137,4 @@ const ExamDetailsRight = styled.div`
 `
 const QuestionsContainer = styled.div`
   margin-top: 20px;
-`
-const SubTitle = styled.div`
-  color: #727e83;
 `

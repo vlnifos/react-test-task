@@ -1,7 +1,7 @@
 import { Icon } from "components/icon/Icon"
 import styled from "styled-components"
 import CrossIcon from "assets/images/cross.svg"
-import CircleCheckIcon from "assets/images/circle-check.svg"
+import CircleCheckIcon from "assets/images/circleCheck.svg"
 
 type Props = {
   cancelBtn: {

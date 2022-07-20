@@ -1,7 +1,26 @@
 import styled from "styled-components"
 
-export const OutlinedBtn = styled.button`
-  padding: 8px 16px;
+export const IconBtn = styled.button`
+  background: #f5f7fa;
+
+  padding: 4px;
+
+  cursor: pointer;
+
+  border-radius: 5px;
+
+  border: none;
+
+  &:hover {
+    opacity: 70%;
+  }
+`
+
+export const OutlinedBtn = styled.button<{
+  bold?: boolean
+  fullWidth?: boolean
+}>`
+  padding: ${(props) => (props.fullWidth ? "12px 0" : "8px 16px")};
 
   background: none;
 
@@ -22,6 +41,10 @@ export const OutlinedBtn = styled.button`
   &: hover {
     opacity: 70%;
   }
+
+  font-weight: ${(props) => (props.bold ? "600" : "400")};
+
+  width: ${(props) => (props.fullWidth ? "100%" : "auto")};
 `
 
 export const SoloBtn = styled.button`
