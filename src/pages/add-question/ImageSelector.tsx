@@ -53,6 +53,8 @@ const IconContainer = styled.span`
 
   padding: 2px;
 
+  margin-top: 5px;
+
   border-radius: 5px;
 
   display: flex;

@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "app/hooks"
 import { OutlinedBtn } from "components/button/Button"
+import { Card } from "components/card/Card"
 import { Dropdown } from "components/dropdown/Dropdown"
 import { Icon } from "components/icon/Icon"
 import { Img } from "components/Img/Img"
@@ -12,9 +13,13 @@ import {
 } from "features/add-question/addQuestionSlice"
 import styled from "styled-components"
 import { humanReadableQuestionType } from "utils/consts"
+import { ImagesContainer } from "./ImagesContainer"
 import { ImageSelector } from "./ImageSelector"
 import { Matching } from "./Matching"
 import { MultiChoice } from "./MultiChoice"
+
+import OnePointIcon from "assets/images/point.svg"
+import PencilIcon from "assets/images/pencil.svg"
 
 export const AddQuestion = (props: any) => {
   const question = useAppSelector(selectQuestion)
@@ -64,8 +69,8 @@ export const AddQuestion = (props: any) => {
   return (
     <AddQuestionContainer>
       {/* Question type */}
+      <SectionTitle>1. Question Type</SectionTitle>
       <Section>
-        <SectionTitle>1. Question Type</SectionTitle>
         <Dropdown
           selected={humanReadableQuestionType[question.type]}
           options={[
@@ -80,37 +85,39 @@ export const AddQuestion = (props: any) => {
       </Section>
 
       {/* Question */}
+      <SectionTitle>2. Question</SectionTitle>
       <Section>
-        <SectionTitle>2. Question</SectionTitle>
+        <Card>
+          <InputWithActions
+            placeholder="Question Text..."
+            value={question.text}
+            color={"#4282AA"}
+            solo
+            fullWidth
+            actionLeft={
+              <Icon
+                size="large"
+                src="https://file.rendit.io/n/rnPoD4SZFti2FUFynQA8.png"
+              />
+            }
+            actionRight={
+              <ImageSelector onImageSelect={(img) => handleImageSelect(img)} />
+            }
+            onChange={(val) => handleChange("text", val.target.value)}
+          />
 
-        <InputWithActions
-          placeholder="Question Text..."
-          value={question.text}
-          actionLeft={
-            <Icon
-              size="large"
-              src="https://file.rendit.io/n/rnPoD4SZFti2FUFynQA8.png"
-            />
-          }
-          actionRight={
-            <ImageSelector onImageSelect={(img) => handleImageSelect(img)} />
-          }
-          onChange={(val) => handleChange("text", val.target.value)}
-        />
-
-        {renderQuestionImages()}
+          {question.images.length > 0 && (
+            <ImagesContainer>{renderQuestionImages()}</ImagesContainer>
+          )}
+        </Card>
       </Section>
 
       {/* Answers */}
+      <SectionTitle>
+        3. Answers
+        <SectionTitleThin> (please tick the correct answers)</SectionTitleThin>
+      </SectionTitle>
       <Section>
-        <SectionTitle>
-          3. Answers
-          <SectionTitleThin>
-            {" "}
-            (please tick the correct answers)
-          </SectionTitleThin>
-        </SectionTitle>
-
         {question.type === "multiple_choice" ? (
           <MultiChoice
             addAnswer={handleAddAnswer}
@@ -127,18 +134,26 @@ export const AddQuestion = (props: any) => {
       </Section>
 
       {/* Points */}
+      <SectionTitle>4. Points</SectionTitle>
       <Section>
-        <SectionTitle>4. Points</SectionTitle>
-        <Text>{question.points} point for the right answer</Text>
-        <OutlinedBtn>Change</OutlinedBtn>
+        <FlexRow>
+          <Icon src={OnePointIcon} size="large" />
+          <Text>point for the right answer</Text>
+        </FlexRow>
+
+        <OutlinedBtn>
+          <Icon src={PencilIcon} size="small" />
+          <span>Change</span>
+        </OutlinedBtn>
       </Section>
 
       {/* Comments */}
+      <SectionTitle>5. Comments</SectionTitle>
       <Section>
-        <SectionTitle>5. Comments</SectionTitle>
         <InputWithActions
           placeholder="Teacher comment..."
           value={question.comments}
+          fullWidth
           actionLeft={
             <Icon
               size="large"
@@ -156,12 +171,14 @@ const AddQuestionContainer = styled.div`
   width: 50%;
 
   margin: 0 auto;
+
+  margin-bottom: 20px;
 `
 const SectionTitle = styled.div`
   color: #777777;
 
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 24px;
+  margin-bottom: 12px;
 `
 const SectionTitleThin = styled.span`
   color: #777777;
@@ -171,4 +188,15 @@ const SectionTitleThin = styled.span`
 const Text = styled.span`
   color: #777777;
 `
+
 const Section = styled.div``
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin: 12px 0;
+
+  > span {
+    margin-left: 8px;
+  }
+`

@@ -3,6 +3,12 @@ import { InputWithActions } from "components/input/InputWithActions"
 import { OutlinedBtn } from "components/button/Button"
 import { ImageSelector } from "./ImageSelector"
 import styled from "styled-components"
+import { Card } from "components/card/Card"
+import { ImagesContainer } from "./ImagesContainer"
+import { Checkbox } from "components/checkbox/Checkbox"
+import { Icon } from "components/icon/Icon"
+import CheckmarkIcon from "assets/images/checkmark.svg"
+import PlusIcon from "assets/images/plus.svg"
 
 type Props = {
   answers: any[]
@@ -38,34 +44,55 @@ export const MultiChoice = (props: Props) => {
     item.images.map((el: string) => (
       <Img
         src={el}
-        alt=""
         key={el}
-        onClick={() => handleImageRemove(item, el)}
+        action={{
+          handler: () => handleImageRemove(item, el),
+        }}
       />
     ))
 
   const renderAnswers = () => {
     return props.answers.map((x) => (
       <AnswerContainer key={x.id}>
-        <InputWithActions
-          placeholder="Answer Text..."
-          value={x.text}
-          onChange={(el) => handleChange(x, "text", el.target.value)}
-          actionLeft={
-            <input
-              type="checkbox"
-              checked={x.isCorrectAnswer}
-              onChange={(el) =>
-                handleChange(x, "isCorrectAnswer", el.target.checked)
-              }
-            />
-          }
-          actionRight={
-            <ImageSelector onImageSelect={(img) => handleImageSelect(x, img)} />
-          }
-        />
+        <Card borderColor={x.isCorrectAnswer && "#8CB89F"}>
+          <InputWithActions
+            placeholder="Answer Text..."
+            value={x.text}
+            solo
+            fullWidth
+            onChange={(el) => handleChange(x, "text", el.target.value)}
+            actionLeft={
+              <div
+                style={{
+                  margin: "7px 5px 0 5px",
+                }}
+              >
+                <Checkbox
+                  checked={x.isCorrectAnswer}
+                  onChange={(value) =>
+                    handleChange(x, "isCorrectAnswer", value)
+                  }
+                />
+              </div>
+            }
+            actionRight={
+              <ImageSelector
+                onImageSelect={(img) => handleImageSelect(x, img)}
+              />
+            }
+          />
 
-        {renderImages(x)}
+          {x.images.length > 0 && (
+            <ImagesContainer>{renderImages(x)}</ImagesContainer>
+          )}
+        </Card>
+
+        {x.isCorrectAnswer && (
+          <CorrectAnswerText>
+            <Icon src={CheckmarkIcon} size="medium" />
+            <span>Correct Answer</span>
+          </CorrectAnswerText>
+        )}
       </AnswerContainer>
     ))
   }
@@ -73,11 +100,33 @@ export const MultiChoice = (props: Props) => {
   return (
     <div>
       {renderAnswers()}
-      <OutlinedBtn onClick={props.addAnswer}>Add answer</OutlinedBtn>
+      <OutlinedBtn onClick={props.addAnswer}>
+        <Icon src={PlusIcon} size="small" />
+        <span>Add answer</span>
+      </OutlinedBtn>
     </div>
   )
 }
 
 const AnswerContainer = styled.div`
   margin-bottom: 10px;
+`
+
+const CorrectAnswerText = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 6px;
+
+  > span {
+    padding-right: 50px;
+
+    color: #285f17;
+
+    font-style: italic;
+    font-size: 12px;
+  }
 `

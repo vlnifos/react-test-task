@@ -77,7 +77,7 @@ export const ExamPage = (props: any) => {
             </OutlinedBtn>
           </FlexRowSpaceBetween>
 
-          {exam.questions?.length > 1 && (
+          {exam.questions?.length > 0 && (
             <div style={{ marginTop: "20px" }}>
               <FlexRowSpaceBetween style={{ marginBottom: "15px" }}>
                 <SubTitle>#</SubTitle>

@@ -64,4 +64,8 @@ const ActionBtn = styled.span`
   background: #f5f7fa;
 
   border-radius: 5px;
+
+  &:hover {
+    background: #d8dadd;
+  }
 `

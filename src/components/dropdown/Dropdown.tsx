@@ -1,6 +1,7 @@
 import { Icon } from "components/icon/Icon"
 import { useState } from "react"
 import styled from "styled-components"
+import ArrowDropdown from "assets/images/arrowDropdown.svg"
 
 type Option = {
   id: string
@@ -19,13 +20,16 @@ export const Dropdown = (props: Props) => {
 
   return (
     <Container onClick={() => setIsOpen(!isOpen)}>
-      <FlexRow>
-        <Icon
-          size="medium"
-          src="https://file.rendit.io/n/LYeH944F8KLfmOEDbFSY.png"
-        />
-        <SelectedOption>{props.selected}</SelectedOption>
-      </FlexRow>
+      <FlexRowSpaceBetween>
+        <FlexRow>
+          <Icon
+            size="large"
+            src="https://file.rendit.io/n/LYeH944F8KLfmOEDbFSY.png"
+          />
+          <SelectedOption>{props.selected}</SelectedOption>
+        </FlexRow>
+        <Icon src={ArrowDropdown} size="medium" />
+      </FlexRowSpaceBetween>
 
       <div>
         {isOpen && (
@@ -47,12 +51,11 @@ export const Dropdown = (props: Props) => {
 }
 
 const Container = styled.div`
-  width: 100%;
-
   border-radius: 5px;
   border: 1px solid #d0e8ef;
 
-  padding: 10px;
+  padding: 16px;
+  padding-right: 14px;
 
   background: white;
 
@@ -62,8 +65,13 @@ const FlexRow = styled.div`
   display: flex;
   align-items: center;
 `
+const FlexRowSpaceBetween = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
 const SelectedOption = styled.div`
-  margin-left: 10px;
+  margin-left: 12px;
 
   color: #4282aa;
 `
