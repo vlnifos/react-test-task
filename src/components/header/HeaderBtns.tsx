@@ -1,4 +1,7 @@
+import { Icon } from "components/icon/Icon"
 import styled from "styled-components"
+import CrossIcon from "assets/images/cross.svg"
+import CircleCheckIcon from "assets/images/circle-check.svg"
 
 type Props = {
   cancelBtn: {
@@ -19,10 +22,12 @@ export const HeaderBtns = (props: Props) => {
         style={{ marginRight: "15px" }}
         onClick={props.cancelBtn.handler}
       >
+        <Icon src={CrossIcon} size="medium" />
         <span>{props.cancelBtn.text || "Cancel"}</span>
       </Button>
 
       <Button btnType="submit" onClick={props.submitBtn.handler}>
+        <Icon src={CircleCheckIcon} size="medium" />
         <span>{props.submitBtn.text || "Submit"}</span>
       </Button>
     </FlexRow>
@@ -52,5 +57,9 @@ const Button = styled.button<{ btnType: "submit" | "cancel" }>`
 
   &: hover {
     opacity: 70%;
+  }
+
+  > span {
+    margin-left: 8px;
   }
 `
