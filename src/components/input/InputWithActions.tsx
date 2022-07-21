@@ -22,8 +22,10 @@ export const InputWithActions = (props: Props) => {
   return (
     <Container solo={props.solo || false}>
       <FlexRow>
+        {/* Left action btn */}
         {props.actionLeft && <ActionBtn>{props.actionLeft}</ActionBtn>}
 
+        {/* Input */}
         <StyledInput
           placeholder={props.placeholder}
           value={props.value}
@@ -33,6 +35,7 @@ export const InputWithActions = (props: Props) => {
         />
       </FlexRow>
 
+      {/* Right action btn */}
       {props.actionRight && <ActionBtn>{props.actionRight}</ActionBtn>}
     </Container>
   )

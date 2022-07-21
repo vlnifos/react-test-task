@@ -9,7 +9,7 @@ type Props = {
 
 export const QuestionItemAnswers = (props: Props) => {
   const renderImages = (images: string[]) =>
-    images.map((el: string) => <Img src={el} alt="" key={el} />)
+    images.map((el: string) => <Img src={el} key={el} />)
 
   const renderMultipleChoiceAnswers = () => {
     return props.answers.map((x) => (

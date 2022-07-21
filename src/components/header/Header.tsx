@@ -6,18 +6,7 @@ import { AddQuestionHeader } from "./AddQuestionHeader"
 import { routes } from "utils/consts"
 import { EditableTitle } from "components/editable-title/EditableTitle"
 
-export const Header = (props: any) => {
-  const {
-    params,
-    route: { path },
-  } = useCurrentRoute()
-
-  const routeName = {
-    [routes.home]: "home",
-    [routes.examById]: "exam",
-    [routes.addQuestion]: "addQuestion",
-  }[path || "/"]!
-
+const getBreadcrumbs = (routeName: string, params: any) => {
   const breadcrumbs = {
     home: {
       icon: "https://file.rendit.io/n/ifOTZoUQ9lrq2TQaPvS7.png",
@@ -31,7 +20,24 @@ export const Header = (props: any) => {
       icon: "https://file.rendit.io/n/ifOTZoUQ9lrq2TQaPvS7.png",
       texts: ["Exams", `Exam id: ${params.id}`, "New question"],
     },
-  }[routeName]!
+  }[routeName]
+
+  return breadcrumbs
+}
+
+export const Header = (props: any) => {
+  const {
+    params,
+    route: { path },
+  } = useCurrentRoute()
+
+  const routeName = {
+    [routes.home]: "home",
+    [routes.examById]: "exam",
+    [routes.addQuestion]: "addQuestion",
+  }[path || "/"]!
+
+  const breadcrumbs = getBreadcrumbs(routeName, params)
 
   return (
     <HeaderStyled>

@@ -15,8 +15,10 @@ type Props = {
 export const Img = (props: Props) => {
   return (
     <ImgContainer>
+      {/* Image to display */}
       <StyledImg src={props.src} style={props.style} />
 
+      {/* Action btn */}
       {props.action && (
         <ActionBtn onClick={props.action.handler}>
           <Icon

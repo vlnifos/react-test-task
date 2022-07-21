@@ -17,6 +17,7 @@ type Props = {
 export const HeaderBtns = (props: Props) => {
   return (
     <FlexRow>
+      {/* Cancel btn */}
       <Button
         btnType="cancel"
         style={{ marginRight: "15px" }}
@@ -26,6 +27,7 @@ export const HeaderBtns = (props: Props) => {
         <span>{props.cancelBtn.text || "Cancel"}</span>
       </Button>
 
+      {/* Submit btn */}
       <Button btnType="submit" onClick={props.submitBtn.handler}>
         <Icon src={CircleCheckIcon} size="medium" />
         <span>{props.submitBtn.text || "Submit"}</span>

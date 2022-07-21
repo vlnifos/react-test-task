@@ -41,6 +41,7 @@ export const examSlice = createSlice({
 
       state.schools = schools
     },
+
     addQuestion: (state, action: PayloadAction<Question>) => {
       const nextId = state.questions[state.questions.length - 1]?.id + 1 || 1
 

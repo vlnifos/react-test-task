@@ -15,9 +15,13 @@ export const Breadcrumbs = (props: Props) => {
         alt=""
         style={{ marginRight: "10px" }}
       />
+
       {props.texts.map((x, index) => (
         <FlexRow key={x}>
+          {/* Title */}
           <span>{x}</span>
+
+          {/* Divider */}
           {index !== props.texts.length - 1 && <Divider>{">"}</Divider>}
         </FlexRow>
       ))}

@@ -13,6 +13,7 @@ type Props = {
 export const Schools = (props: Props) => {
   return (
     <div>
+      {/* Header */}
       <Head>
         <Icon
           size="large"
@@ -24,8 +25,10 @@ export const Schools = (props: Props) => {
 
       <HorizontalLine />
 
+      {/* Search input */}
       <Input />
 
+      {/* Schools */}
       <SchoolsContainer>
         <SchoolItem>
           <span>All schools</span>

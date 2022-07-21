@@ -8,7 +8,7 @@ type Props = {
 export const Checkbox = (props: Props) => {
   return (
     <label>
-      <HiddenCheckbox
+      <CustomCheckbox
         type="checkbox"
         checked={props.checked}
         onChange={(el) => props.onChange(el.target.checked)}
@@ -17,7 +17,7 @@ export const Checkbox = (props: Props) => {
   )
 }
 
-const HiddenCheckbox = styled.input`
+const CustomCheckbox = styled.input`
   appearance: none;
 
   border: 2px solid #777777;

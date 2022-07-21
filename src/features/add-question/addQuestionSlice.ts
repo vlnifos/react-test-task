@@ -32,6 +32,7 @@ export const addQuestionSlice = createSlice({
       const { type, data } = action.payload
       state[type] = data
     },
+
     addAnswer(state) {
       const lastId = state.answers[state.answers.length - 1]?.id || 0
 
@@ -49,6 +50,7 @@ export const addQuestionSlice = createSlice({
       const index = state.answers.findIndex((x) => x.id === id)
       state.answers[index] = item
     },
+
     clearQuestionData(state) {
       return {
         ...initialState,

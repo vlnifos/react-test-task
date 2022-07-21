@@ -11,8 +11,10 @@ export const ImageSelector = (props: Props) => {
 
   const handleImageSelect = (el: any) => {
     el.preventDefault()
+
     const { files } = el.target
     const localImageUrl = window.URL.createObjectURL(files[0])
+
     props.onImageSelect(localImageUrl)
   }
 

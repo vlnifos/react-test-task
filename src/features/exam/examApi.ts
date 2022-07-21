@@ -24,6 +24,7 @@ export const examApi = createApi({
           data: {} as ExamData,
         }
       },
+
       async onCacheEntryAdded(
         arg,
         { cacheDataLoaded, updateCachedData, dispatch, cacheEntryRemoved }

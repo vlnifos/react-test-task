@@ -22,15 +22,21 @@ export const Dropdown = (props: Props) => {
     <Container onClick={() => setIsOpen(!isOpen)}>
       <FlexRowSpaceBetween>
         <FlexRow>
+          {/* Icon */}
           <Icon
             size="large"
             src="https://file.rendit.io/n/LYeH944F8KLfmOEDbFSY.png"
           />
+
+          {/* Selected option */}
           <SelectedOption>{props.selected}</SelectedOption>
         </FlexRow>
+
+        {/* Arrow icon */}
         <Icon src={ArrowDropdown} size="medium" />
       </FlexRowSpaceBetween>
 
+      {/* Options */}
       <div>
         {isOpen && (
           <div>
