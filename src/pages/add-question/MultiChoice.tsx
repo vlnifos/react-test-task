@@ -100,6 +100,7 @@ export const MultiChoice = (props: Props) => {
   return (
     <div>
       {renderAnswers()}
+
       <OutlinedBtn onClick={props.addAnswer}>
         <Icon src={PlusIcon} size="small" />
         <span>Add answer</span>

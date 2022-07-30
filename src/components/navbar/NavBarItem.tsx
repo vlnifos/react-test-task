@@ -12,6 +12,7 @@ export const NavBarItem = (props: NavBarItemProps) => {
   return (
     <MainMenuItem isActive={props.isActive} disabled={props.disabled}>
       {props.badge && <Badge>{props.badge}</Badge>}
+
       <img src={props.imageSrc} alt="navbar_image" />
     </MainMenuItem>
   )

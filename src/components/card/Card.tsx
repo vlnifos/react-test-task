@@ -1,11 +1,7 @@
 import styled from "styled-components"
 
 export const Card = styled.div<{ padding?: boolean; borderColor?: string }>`
-  ${(props) =>
-    props.padding &&
-    `
-  padding: 15px;
-`}
+  ${(props) => props.padding && `padding: 15px;`}
 
   border-radius: 5px;
 

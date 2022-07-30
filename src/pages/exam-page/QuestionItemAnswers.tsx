@@ -49,6 +49,7 @@ const Title = styled.div`
   color: #4282aa;
   margin-bottom: 20px;
 `
+
 const CorrectAnswerText = styled.div`
   color: #285f17;
 `

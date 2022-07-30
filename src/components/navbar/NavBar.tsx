@@ -66,6 +66,7 @@ export const NavBar = (props: any) => {
             />
           ))}
         </FlexColumn>
+
         <FlexColumn>
           <NavBarItem
             key="documents"

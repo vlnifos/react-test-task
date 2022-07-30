@@ -67,20 +67,24 @@ const Container = styled.div`
 
   cursor: pointer;
 `
+
 const FlexRow = styled.div`
   display: flex;
   align-items: center;
 `
+
 const FlexRowSpaceBetween = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `
+
 const SelectedOption = styled.div`
   margin-left: 12px;
 
   color: #4282aa;
 `
+
 const StyledOption = styled.div<{ disabled: boolean }>`
   color: ${(props) => (props.disabled ? "#777777" : "#4282aa")};
 `

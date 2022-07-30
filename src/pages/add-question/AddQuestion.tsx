@@ -174,22 +174,26 @@ const AddQuestionContainer = styled.div`
 
   margin-bottom: 20px;
 `
+
 const SectionTitle = styled.div`
   color: #777777;
 
   margin-top: 24px;
   margin-bottom: 12px;
 `
+
 const SectionTitleThin = styled.span`
   color: #777777;
 
   font-size: 14px;
 `
+
 const Text = styled.span`
   color: #777777;
 `
 
 const Section = styled.div``
+
 const FlexRow = styled.div`
   display: flex;
   align-items: center;

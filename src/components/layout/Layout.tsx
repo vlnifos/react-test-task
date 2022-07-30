@@ -18,6 +18,7 @@ export const Layout = (props: any) => {
 const Row = styled.div`
   display: flex;
 `
+
 const MainPage = styled.div`
   width: 100%;
   min-height: 100vh;

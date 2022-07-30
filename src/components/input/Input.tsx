@@ -26,6 +26,7 @@ const Container = styled.div`
 
   padding: 10px;
 `
+
 const StyledInput = styled.input`
   border: none;
 

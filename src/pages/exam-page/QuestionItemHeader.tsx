@@ -47,6 +47,7 @@ const Container = styled.div<{ fullWidth?: boolean; color?: string }>`
 const LeftContainer = styled(Container)`
   width: 70%;
 `
+
 const RightContainer = styled(Container)`
   width: 30%;
 `
@@ -55,9 +56,11 @@ const Id = styled.div`
   width: 10%;
   text-align: center;
 `
+
 const Type = styled.div`
   width: 90%;
 `
+
 const Actions = styled.div`
   width: 30%;
   text-align: center;

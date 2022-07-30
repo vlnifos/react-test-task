@@ -74,6 +74,7 @@ const SchoolsContainer = styled.div`
   margin-bottom: 10px;
   padding: 0 10px;
 `
+
 const FlexRow = styled.div`
   display: flex;
   align-items: center;
